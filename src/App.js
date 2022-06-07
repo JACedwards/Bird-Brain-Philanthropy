@@ -2,15 +2,13 @@
 import './css/App.css';
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import {Routes, Route} from 'react-router-dom';
+import Home  from './views/Home';
+import Shop from './views/Shop';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [students, setStudents] = useState(['/ Jay /', '/ Junco /', '/ Hawk /', '/ Red Winged Blackbird /', '/ Hummingbird /']);
+  const [students, setStudents] = useState([' Jay ', ' Junco ', ' Hawk ', ' Red-Winged Blackbird ', ' Hummingbird ', 'Kestrel', 'Cowbird', 'Parrot', 'Penguin', 'Ostrich']);
 
-  const changeCounter = () => {
-    console.log('current count' + count);
-    setCount(count + 1);
-  }
 
   const shuffleStudents = () => {
     // students.sort(() => Math.random() - 0.5);
@@ -20,14 +18,14 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Navbar studentsFromApp={students} setStudentsFromApp={setStudents}/>
-      {console.log('Hello, Tuesday')}
-      <h1 className='counter'>{count}</h1>
-      <button onClick={changeCounter}>Change Count</button>
-      <h1 className='students'>{students}</h1>
-      <button onClick={shuffleStudents}>Shuffle Students</button>
-    </div>
+    <React.Fragment>
+    <Navbar/>
+
+    <Routes>
+      <Route children path='/' element={<Home students={students} shuffleStudents={shuffleStudents} />} />
+      <Route children path='/shop' element={<Shop />} />
+    </Routes>
+    </React.Fragment>
   );
 }
 
