@@ -12,7 +12,7 @@ let Navbar = () => {
 
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   
-  <a className="navbar-brand" href="#">Bird on the Brain |</a>
+<Link className="nav-link" style={{color: 'white'}}  to="/">Football Frenzy |</Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -22,11 +22,9 @@ let Navbar = () => {
                 <Link className="nav-link" to="/">Home</Link>
             </li>
             <li className="nav-item active">
-                <Link className="nav-link" to="/shop">Shop</Link>
+                <Link className="nav-link" to="/shop">Trade</Link>
             </li>
-            <li className="nav-item disabled">
-                <Link className="nav-link" to="/IDK">IDK</Link>
-            </li>
+
         </ul>
         <ul className='navbar-nav ml-auto'>
             <li className="nav-item">

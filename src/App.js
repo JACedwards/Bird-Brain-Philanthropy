@@ -7,22 +7,21 @@ import Home  from './views/Home';
 import Shop from './views/Shop';
 
 function App() {
-  const [students, setStudents] = useState([' Jay ', ' Junco ', ' Hawk ', ' Red-Winged Blackbird ', ' Hummingbird ', 'Kestrel', 'Cowbird', 'Parrot', 'Penguin', 'Ostrich']);
+  const [players, setplayers] = useState(['Messi', ' Marco Veratti', ' Kylian Mbappe', ' ', ' Neymar', 'Keylor Navas', 'Marquinhos', 'Nuno Mendes', 'Idrissa Gueye', 'Sergio Ramos']);
 
 
-  const shuffleStudents = () => {
-    // students.sort(() => Math.random() - 0.5);
-    let tempStudents = [...students];
-    tempStudents.sort(() => Math.random() - 0.5);
-    setStudents(tempStudents); 
+  const shuffleplayers = () => {
+    // players.sort(() => Math.random() - 0.5);
+    let tempplayers = [...players];
+    tempplayers.sort(() => Math.random() - 0.5);
+    setplayers(tempplayers); 
   }
 
   return (
     <React.Fragment>
     <Navbar/>
-
     <Routes>
-      <Route children path='/' element={<Home students={students} shuffleStudents={shuffleStudents} />} />
+      <Route children path='/' element={<Home players={players} shuffleplayers={shuffleplayers} />} />
       <Route children path='/shop' element={<Shop />} />
     </Routes>
     </React.Fragment>

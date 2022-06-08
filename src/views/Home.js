@@ -17,18 +17,18 @@ let Home = props => {
         setCatfact(fact.fact);
     }
 
-    useEffect(() => {loadCatFact();}, [props.students]);
+    useEffect(() => {loadCatFact();}, [props.players]);
 
 
     return (
         <div className="container mt-2">
                <div className='row'>
                     {console.log('Hello, Bird Brains!')}
-                    <button className='btn btn-block btn-info'  onClick={props.shuffleStudents}>Shuffle Birds</button>
+                    <button className='btn btn-block btn-lg btn-info'  onClick={props.shuffleplayers}>Flip the Footballers</button>
                </div>
                <br></br>
                <div className="row justify-content-center">
-                    <h1>CatFact that a {props.students[0]} Couldn't Care Less About </h1>
+                    <h1>{props.players[0]}'s Favorite CatFact </h1>
                </div>
                <br></br>
                <div className="row justify-content-center">
