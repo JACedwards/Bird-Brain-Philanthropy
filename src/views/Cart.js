@@ -17,16 +17,28 @@ let Cart = () => {
     }
 
     const decQuantity = player => { 
+        let mutableCart = {...cart}
 
+        mutableCart.size -= mutableCart.items[player.obj.id].quantity;
+        mutableCart.total -= player.obj.number*mutableCart.items[player.obj.id].quantity;
+        delete mutableCart.items[player.obj.id];
+        setCart(mutableCart);
         
     }
 
     const removePlayer = player => { 
+        let mutableCart = {...cart}
 
+        mutableCart.size--;
+        mutableCart.total -= player.obj.number;
+        delete mutableCart.items[player.obj.id];
+        setCart(mutableCart);
         
     }
 
     const clearCart = () => { 
+        let newCart = {items: {}, total: 0, size: 0}
+        setCart(newCart);
 
         
     }
@@ -50,14 +62,14 @@ let Cart = () => {
                                 </div>
                             </div>
                             <div className="d-flex flex-row align-items-center qty">
-                                <i className="fa fa-minus text-danger"> </i>
+                                <i className="fa fa-minus text-danger" onClick={() => {decQuantity(player);}}> </i>
                                 <h5 className="text-grey mt-1 mr-1 ml-1">{player.quantity}</h5>
                                 <i className="fa fa-plus text-success" onClick={() => {incQuantity(player);}}></i>
                             </div>
                             <div>
                                 <h5 className="text-grey">{player.obj.number} K each</h5>
                             </div>
-                            <div className="d-flex align-items-center"><i className="fa fa-trash mb-1 text-danger"></i></div>
+                            <div className="d-flex align-items-center"><i className="fa fa-trash mb-1 text-danger" onClick={() => {removePlayer(player);}}></i></div>
                         </div>
                         })
                         
@@ -71,12 +83,18 @@ let Cart = () => {
                         <div>
                             <h4 className="text-grey">${cart.total},000,000</h4>
                         </div>
-                        <div className="d-flex align-items-center"><button className="btn btn-sm btn-danger">Clear Cart</button>
+                        <div className="d-flex align-items-center">
+                            {cart.size === 0?
+                                 <button disabled className="btn btn-sm btn-success">Your cart is empty</button>
+                                 :
+                                 <button className="btn btn-sm btn-danger" onClick={clearCart}>Clear Cart</button>
+
+                            }
             
                         </div>
                     </div>
                     <div className="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-                        <button className="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Checkout</button>
+                        <button className="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" disabled={cart.size === 0 ? true : false}>Checkout</button>
                     </div>
                 </div>
             </div>

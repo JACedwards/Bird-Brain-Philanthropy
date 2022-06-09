@@ -53,7 +53,7 @@ let Shop = () => {
                 })
             
             
-               : <h3>The players are still in the locker room. They'll be out in a moment.</h3>}
+               : <h3 className = "text-center">The players are still in the locker room. They'll be out in a moment.</h3>}
 
            </div>
 

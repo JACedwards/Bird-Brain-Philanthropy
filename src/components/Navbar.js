@@ -32,10 +32,16 @@ let Navbar = () => {
         </ul>
         <ul className='navbar-nav ml-auto align-items-center'>
             <li className="nav-item">
-                <p className="nav-link">Your cart:</p>
+                <p className="nav-link">Welcome!</p>
             </li>
             <li className='nav-item'>
-                <Link className='btn btn-sm btn-info' to='/cart'><i className="fa-solid fa-cart-shopping m-2"></i>  Items in Cart: {cart.size} | ${cart.total},000,000</Link>
+                {
+                    cart.size == 0 ?
+                    <Link className='btn btn-sm btn-info m-2' to='/shop'><i class="fa-regular fa-futbol"></i>  Poach a Player </Link> 
+                    : 
+                    <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-regular fa-futbol"></i>  Items in Cart: {cart.size} | ${cart.total},000,000</Link>
+                }
+                
             </li>
         </ul>
   </div>
