@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
+import{ DataContext} from '../DataProvider';
 
 let Navbar = () => {
     
@@ -8,6 +9,9 @@ let Navbar = () => {
         console.log('current count' + count);
         setCount(count + 1);
       }
+
+    const{cart} = useContext(DataContext);
+    
     return(
 
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,12 +30,12 @@ let Navbar = () => {
             </li>
 
         </ul>
-        <ul className='navbar-nav ml-auto'>
+        <ul className='navbar-nav ml-auto align-items-center'>
             <li className="nav-item">
-                <p className="nav-link">{count}</p>
+                <p className="nav-link">Your cart:</p>
             </li>
             <li className='nav-item'>
-                <button className='btn btn-sm btn-info' onClick={changeCounter}>Count</button>
+                <Link className='btn btn-sm btn-info' to='/cart'><i className="fa-solid fa-cart-shopping m-2"></i>  Items in Cart: {cart.size} | ${cart.total},000,000</Link>
             </li>
         </ul>
   </div>

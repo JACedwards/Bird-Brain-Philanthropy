@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { DataContext } from '../DataProvider';
 import axios from 'axios';
 
 let Shop = () => {
@@ -15,10 +16,22 @@ let Shop = () => {
    }
    const [players, setPlayers] = useState(()=>{loadPlayerData();});
 
+   const{cart, setCart} = useContext(DataContext);
+
+   const stealPlayer = player => {
+       let mutableCart = {...cart};
+       mutableCart.size++;
+       mutableCart.total += player.number;
+       mutableCart.items[player.id] ? mutableCart.items[player.id].quantity++ : mutableCart.items[player.id] = {'obj' : player, 'quantity' : 1}
+       console.log(mutableCart);
+       setCart(mutableCart);
+   }
+
    return(
         <div className='container'>
            <div className='row justify-content-center'>
               <h1>Filching Footballers</h1>
+
            </div>
            <div className='row'>
                 {typeof players === 'object' && players[1] ? players.map((player, index) => {
@@ -34,13 +47,13 @@ let Shop = () => {
                         </ul>
                         <div className="card-body">
                             <p className="card-link float-left">Transfer Fee: {player.transfer_cost}</p>
-                            <button onClick={() => { adoptPlayer(player) }} className="float-right btn btn-sm btn-info">Steal!</button>
+                            <button onClick={() => { stealPlayer(player) }} className="float-right btn btn-sm btn-info">Steal!</button>
                         </div>
                     </div>
                 })
             
             
-               : <h3>"Bide your time a bit: The birds still be bathin'"</h3>}
+               : <h3>The players are still in the locker room. They'll be out in a moment.</h3>}
 
            </div>
 
