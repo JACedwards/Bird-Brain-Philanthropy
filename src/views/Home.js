@@ -24,11 +24,15 @@ let Home = props => {
         <div className="container mt-2">
                <div className='row'>
                     {console.log('Hello, Bird Brains!')}
-                    <button className='btn btn-block btn-lg btn-info'  onClick={props.shuffleplayers}>Flip the Footballers</button>
+                    <button className='btn btn-block btn-lg btn-info'  onClick={props.shuffleplayers}>Find a Fresh Fact</button>
                </div>
                <br></br>
                <div className="row justify-content-center">
-                    <h1>{props.players[0]}'s Favorite CatFact </h1>
+                    <h1>{props.players[0]}'s</h1>
+               </div>
+               <br></br>
+               <div className="row justify-content-center">
+                    <h1>Favorite Fact about Feeble-minded Felines </h1>
                </div>
                <br></br>
                <div className="row justify-content-center">

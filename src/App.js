@@ -8,7 +8,7 @@ import Shop from './views/Shop';
 import Cart from './views/Cart';
 
 function App() {
-  const [players, setplayers] = useState(['Messi', ' Marco Veratti', ' Kylian Mbappe', ' ', ' Neymar', 'Keylor Navas', 'Marquinhos', 'Nuno Mendes', 'Idrissa Gueye', 'Sergio Ramos']);
+  const [players, setplayers] = useState(['Ruddy Duck', ' Western Bluebird', ' Prothonotary Warbler', ' ', ' Ladder-backed Woodpecker', 'Red-throated Loon', 'Kestral', 'Sandhill Crane', 'Junco', 'Horned Owl']);
 
 
   const shuffleplayers = () => {
