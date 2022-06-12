@@ -12,28 +12,30 @@ let Home = props => {
     }
     const loadCatFact = async () => {
         let fact = await getCatFact();
-        console.log(fact, typeof fact);
 
         setCatfact(fact.fact);
     }
 
     useEffect(() => {loadCatFact();}, [props.players]);
 
+    
 
     return (
         <div className="container mt-2">
                <div className='row'>
                     {console.log('Hello, Bird Brains!')}
-                    <button className='btn btn-block btn-lg btn-info'  onClick={props.shuffleplayers}>Find a Fresh Fact</button>
+                    <button className='btn btn-block btn-lg btn-info'  onClick={props.shuffleplayers}>Fetch a Fresh Fact</button>
                </div>
                <br></br>
                <div className="row justify-content-center">
-                    <h1>{props.players[0]}'s</h1>
+                    <h1>The {props.players[0]}s'</h1>
                </div>
                <br></br>
-               <div className="row justify-content-center">
-                    <h1>Favorite Fact about Feeble-minded Felines </h1>
+               <div className="row justify-content-center mt-0">
+                    <h1><u>Favorite Fact about Feeble-Minded Felines </u> </h1>
+                    
                </div>
+
                <br></br>
                <div className="row justify-content-center">
                     <h3>{catfact}</h3>
