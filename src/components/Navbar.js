@@ -1,18 +1,37 @@
 import {Link} from 'react-router-dom';
 import {useState, useContext} from 'react';
 import{ DataContext} from '../DataProvider';
+import { useAuth, useUser } from 'reactfire';
+import { GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/auth';
+import { async } from '@firebase/util';
+
 
 let Navbar = () => {
+    const auth = useAuth();
     
-    const [count, setCount] = useState(0);
-    const changeCounter = () => {
-        console.log('current count' + count);
-        setCount(count + 1);
-      }
+    // const [count, setCount] = useState(0);
+
+    // const changeCounter = () => {
+    //     console.log('current count' + count);
+    //     setCount(count + 1);
+    //   }
 
     const{cart} = useContext(DataContext);
+
+    const { status, data: user } = useUser();
+
+    const signin = async () => {
+        const provider = new GoogleAuthProvider();
+        let u = await signInWithPopup(auth, provider);
+        console.log(u);
+    }
+
+    const signout = async () => {
+        await signOut(auth);
+        console.log('signed user out');
+    }
     
-    return(
+    return (
 
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   
@@ -31,9 +50,24 @@ let Navbar = () => {
 
         </ul>
         <ul className='navbar-nav ml-auto align-items-center'>
-            <li className="nav-item">
-                <p className="nav-link">Welcome!</p>
-            </li>
+        {status === 'loading' ?
+                        <li className="nav-item">
+                            <p className="nav-link m-0">Logging in...</p>
+                        </li>
+                        : user ?
+                            <>
+                                <li className="nav-item">
+                                    <p className="nav-link m-0">Welcome, {user.displayName}!</p>
+                                </li>
+                                <li className="nav-item">
+                                    <button className="btn btn-sm btn-info mr-2" onClick={signout}>Sign out</button>
+                                </li>
+                            </>
+                            :
+                            <li className="nav-item">
+                                <button className="btn btn-sm btn-info mr-2" onClick={signin}>Sign in</button>
+                            </li>
+                    }
             <li className='nav-item'>
                 {
                     cart.size == 0 ?
