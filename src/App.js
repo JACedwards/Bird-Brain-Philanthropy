@@ -8,7 +8,7 @@ import Shop from './views/Shop';
 import Cart from './views/Cart';
 
 function App() {
-  const [players, setplayers] = useState(['Ruddy Duck', ' Western Bluebird', ' Prothonotary Warbler', ' ', ' Ladder-backed Woodpecker', 'Red-throated Loon', 'Kestral', 'Sandhill Crane', 'Junco', 'Horned Owl']);
+  const [players, setplayers] = useState(['Ruddy Duck', ' Western Bluebird', ' Prothonotary Warbler', ' Ladder-backed Woodpecker', 'Red-throated Loon', 'Kestral', 'Sandhill Crane', 'Junco', 'Horned Owl', "Ridgeway's Rail", 'Loggerhead Shrike', 'Piping Plover', 'Ferruginous Pygmy Owl', "Kirtland's Warbler", 'Marbled Murret', "Bell's Vireo", "Inyo California Towhee", "Gyrfalcon", 'Atlantic Puffin', 'Blue-Footed Booby' ]);
 
 
   const shuffleplayers = () => {

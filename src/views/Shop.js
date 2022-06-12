@@ -30,7 +30,11 @@ let Shop = () => {
    return(
         <div className='container'>
            <div className='row justify-content-center'>
-              <h1>Bird</h1>
+              <h1>Bring your Bivalves, Beetles, Bass, and Bilbies </h1>
+
+           </div>
+           <div className='row justify-content-center'>
+              <h1>To Barter for Birds </h1>
 
            </div>
            <div className='row'>
