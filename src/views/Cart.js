@@ -1,10 +1,17 @@
 import '../css/cartstyles.css'
-import  { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DataContext } from '../DataProvider';
+import { useDatabase, useUser } from 'reactfire';
+import { set, ref } from 'firebase/database';
+import { Link } from 'react-router-dom';
 
 let Cart = () => {
-
+    const {data: user} = useUser();
+    const db = useDatabase();
+    
     const {cart, setCart} = useContext(DataContext);
+    // below grayed out
+    const [msg, setMsg] = useState(false);
 
     const incQuantity = player => { 
         let mutableCart = {...cart}
@@ -12,7 +19,13 @@ let Cart = () => {
         mutableCart.size++;
         mutableCart.total += player.obj.price;
         mutableCart.items[player.obj.bird_id].quantity++;
+        
+        if (user) {
+            set(ref(db, 'carts/' + user.uid), {mutableCart});
+        }
+        
         setCart(mutableCart);
+        setMsg(false);
 
     }
 
@@ -22,6 +35,9 @@ let Cart = () => {
         mutableCart.size -= mutableCart.items[player.obj.bird_id].quantity;
         mutableCart.total -= player.obj.price*mutableCart.items[player.obj.bird_id].quantity;
         delete mutableCart.items[player.obj.bird_id];
+        if (user) {
+            set(ref(db, 'carts/' + user.uid), {mutableCart});
+        }
         setCart(mutableCart);
         
     }
@@ -32,12 +48,18 @@ let Cart = () => {
         mutableCart.size--;
         mutableCart.total -= player.obj.price;
         delete mutableCart.items[player.obj.bird_id];
+        if (user) {
+            set(ref(db, 'carts/' + user.uid), {mutableCart});
+        }
         setCart(mutableCart);
         
     }
 
     const clearCart = () => { 
-        let newCart = {items: {}, total: 0, size: 0}
+        let newCart = {items: {}, total: 0, size: 0};
+        if (user) {
+            set(ref(db, 'carts/' + user.uid), null);
+        }
         setCart(newCart);
 
         

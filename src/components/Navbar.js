@@ -24,6 +24,7 @@ let Navbar = () => {
         const provider = new GoogleAuthProvider();
         let u = await signInWithPopup(auth, provider);
         console.log(u);
+        console.log('User signed in')
     }
 
     const signout = async () => {
