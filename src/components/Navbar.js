@@ -39,7 +39,7 @@ let Navbar = () => {
                     cart.size == 0 ?
                     <Link className='btn btn-sm btn-info m-2' to='/shop'><i class="fa-solid fa-dove"></i>  Bird Bartering </Link> 
                     : 
-                    <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-solid fa-dove"></i>  Items in Cart: {cart.size} | ${cart.total},000,000</Link>
+                    <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-solid fa-dove"></i>  Items in Cart: {cart.size} | {cart.total} Critters</Link>
                 }
                 
             </li>

@@ -10,8 +10,8 @@ let Cart = () => {
         let mutableCart = {...cart}
 
         mutableCart.size++;
-        mutableCart.total += player.obj.number;
-        mutableCart.items[player.obj.id].quantity++;
+        mutableCart.total += player.obj.price;
+        mutableCart.items[player.obj.bird_id].quantity++;
         setCart(mutableCart);
 
     }
@@ -19,9 +19,9 @@ let Cart = () => {
     const decQuantity = player => { 
         let mutableCart = {...cart}
 
-        mutableCart.size -= mutableCart.items[player.obj.id].quantity;
-        mutableCart.total -= player.obj.number*mutableCart.items[player.obj.id].quantity;
-        delete mutableCart.items[player.obj.id];
+        mutableCart.size -= mutableCart.items[player.obj.bird_id].quantity;
+        mutableCart.total -= player.obj.price*mutableCart.items[player.obj.bird_id].quantity;
+        delete mutableCart.items[player.obj.bird_id];
         setCart(mutableCart);
         
     }
@@ -30,8 +30,8 @@ let Cart = () => {
         let mutableCart = {...cart}
 
         mutableCart.size--;
-        mutableCart.total -= player.obj.number;
-        delete mutableCart.items[player.obj.id];
+        mutableCart.total -= player.obj.price;
+        delete mutableCart.items[player.obj.bird_id];
         setCart(mutableCart);
         
     }
@@ -47,10 +47,12 @@ let Cart = () => {
         <div className="container mt-5 mb-5">
             <div className="d-flex justify-content-center row">
                 <div className="col-md-8">
-                    <div className="p-2">
-                        <h4>Steal a Player:</h4>
+                    <div className="p-0" align="center">
+                        <h4>Cart</h4>
                     </div>
-
+                    <div className="p-0" align="center">
+                        <h4>Birds Bartered For  |  Food Trade Promised</h4>
+                    </div>
                         {/* Single player */}
                         { Object.values(cart.items).map((player) => {
 
@@ -67,7 +69,7 @@ let Cart = () => {
                                 <i className="fa fa-plus text-success" onClick={() => {incQuantity(player);}}></i>
                             </div>
                             <div>
-                                <h5 className="text-grey">{player.obj.number} K each</h5>
+                                <h5 className="text-grey">{player.obj.price} Critters Each</h5>
                             </div>
                             <div className="d-flex align-items-center"><i className="fa fa-trash mb-1 text-danger" onClick={() => {removePlayer(player);}}></i></div>
                         </div>
@@ -81,7 +83,7 @@ let Cart = () => {
                         <div className="d-flex flex-column align-items-center product-details"><span className="font-weight-bold">Total:</span>
                         </div>
                         <div>
-                            <h4 className="text-grey">${cart.total},000,000</h4>
+                            <h4 className="text-grey">{cart.total} Critters</h4>
                         </div>
                         <div className="d-flex align-items-center">
                             {cart.size === 0?
