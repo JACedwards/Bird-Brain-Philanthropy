@@ -1,13 +1,15 @@
-import {Link} from 'react-router-dom';
-import {useState, useContext} from 'react';
-import{ DataContext} from '../DataProvider';
-import { useAuth, useUser } from 'reactfire';
-import { GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/auth';
-import { async } from '@firebase/util';
+import { Link } from "react-router-dom";
+import { useEffect, useContext } from 'react';
+import { DataContext } from '../DataProvider';
+import { useAuth, useUser, useDatabase } from 'reactfire';
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { ref, child, get } from 'firebase/database';
 
 
 let Navbar = () => {
     const auth = useAuth();
+
+    const db = useDatabase();
     
     // const [count, setCount] = useState(0);
 
@@ -16,7 +18,9 @@ let Navbar = () => {
     //     setCount(count + 1);
     //   }
 
-    const{cart} = useContext(DataContext);
+    // adding setCart here made everything disappear on screen
+
+    const{cart, set,} = useContext(DataContext);  
 
     const { status, data: user } = useUser();
 
@@ -30,8 +34,24 @@ let Navbar = () => {
     const signout = async () => {
         await signOut(auth);
         console.log('signed user out');
+        setCart({items: {}, total: 0, size: 0});
     }
     
+    useEffect(() => {
+        if (user) {
+            get(child(ref(db), `carts/${user.uid}`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    console.log(snapshot.val());
+                    setCart(snapshot.val());
+                } else {
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
+    }, [user]);
+
     return (
 
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
