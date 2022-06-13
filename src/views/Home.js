@@ -18,6 +18,27 @@ let Home = props => {
 
     useEffect(() => {loadCatFact();}, [props.players]);
 
+    // start pic experiment
+
+    const [catpic, setCatpic] = useState();
+  
+
+    const getCatpic = async () => {
+        let response = await axios.get('https://api.thecatapi.com/v1/images/search');
+        return response.status === 200 ? response.data : null;
+    }
+    const loadCapict = async () => {
+        let fact = await getCatpic();
+
+        setCatpic(fact[0].url);
+    }
+
+    useEffect(() => {loadCapict();}, [props.players]);
+
+
+
+    // end cat experiment
+
     
 
     return (
@@ -39,6 +60,13 @@ let Home = props => {
                <br></br>
                <div className="row justify-content-center">
                     <h3>{catfact}</h3>
+               </div>
+               <div className="row justify-content-center mt-5">
+                    <h1><u>Picture of the Enemy </u> </h1>
+                    
+               </div>
+               <div className="row justify-content-center">
+               <img src={catpic} className="img-fluid" alt='cat pic' />               
                </div>
         </div>
     )

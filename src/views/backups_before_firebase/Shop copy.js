@@ -1,6 +1,8 @@
 import { useState, useContext } from 'react';
 import { DataContext } from '../DataProvider';
 import axios from 'axios';
+import { useUser, useDatabase } from 'reactfire';
+import { set, ref } from 'firebase/database';
 
 let Shop = () => {
 
@@ -14,9 +16,12 @@ let Shop = () => {
       console.log(data);
       setPlayers(data);
    }
+
    const [players, setPlayers] = useState(()=>{loadPlayerData();});
 
    const{cart, setCart} = useContext(DataContext);
+   const{data: user} = useUser();
+   const db = useDatabase();
 
    const stealPlayer = player => {
        let mutableCart = {...cart};
@@ -24,6 +29,10 @@ let Shop = () => {
        mutableCart.total += player.price;
        mutableCart.items[player.bird_id] ? mutableCart.items[player.bird_id].quantity++ : mutableCart.items[player.bird_id] = {'obj' : player, 'quantity' : 1}
        console.log(mutableCart);
+       console.log('goober')
+       if (user) {
+        set(ref(db, 'carts/' + user.uid), {mutableCart});
+    }
        setCart(mutableCart);
    }
 
