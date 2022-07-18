@@ -20,7 +20,7 @@ let Navbar = () => {
 
     // adding setCart here made everything disappear on screen
 
-    const{cart, setCart,} = useContext(DataContext);  
+    const{cart, set, } = useContext(DataContext);  
 
     const { status, data: user } = useUser();
 
@@ -34,7 +34,7 @@ let Navbar = () => {
     const signout = async () => {
         await signOut(auth);
         console.log('signed user out');
-        setCart({items: {}, total: 0, size: 0});
+        setCart({items: {}, total: 0, size: 0})
     }
     
     useEffect(() => {
@@ -91,7 +91,7 @@ let Navbar = () => {
                     }
             <li className='nav-item'>
                 {
-                    cart.size === 0 ?
+                    cart.size == 0 ?
                     <Link className='btn btn-sm btn-info m-2' to='/shop'><i class="fa-solid fa-dove"></i>  Bird Bartering </Link> 
                     : 
                     <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-solid fa-dove"></i>  Items in Cart: {cart.size} | {cart.total} Critters</Link>
