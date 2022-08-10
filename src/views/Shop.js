@@ -6,9 +6,14 @@ import { set, ref } from 'firebase/database';
 
 let Shop = () => {
 
-   let getPlayerData = async () => {
-      let data = await axios.get('http://127.0.0.1:5000/api/birds')
-      return data.status === 200 ? data.data : null
+    
+
+    let getPlayerData = async () => {
+        // this would be version for local database  
+        // let data = await axios.get('http://127.0.0.1:5000/api/react');
+        let data = await axios.get('https://bird-on-the-brain-flask.herokuapp.com/api/react')
+
+        return data.status === 200 ? data.data : null
    }
    
    let loadPlayerData = async () => {
@@ -18,6 +23,7 @@ let Shop = () => {
    }
 
    const [players, setPlayers] = useState(()=>{loadPlayerData();});
+
 
    const{cart, setCart} = useContext(DataContext);
    const{data: user} = useUser();
