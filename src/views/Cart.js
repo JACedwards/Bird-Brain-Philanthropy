@@ -6,11 +6,13 @@ import { set, ref } from 'firebase/database';
 import { Link } from 'react-router-dom';
 
 let Cart = () => {
+
     const {data: user} = useUser();
     const db = useDatabase();
     
     const {cart, setCart} = useContext(DataContext);
-    // below grayed out
+
+
     const [msg, setMsg] = useState(false);
 
     const incQuantity = player => { 
@@ -18,28 +20,35 @@ let Cart = () => {
 
         mutableCart.size++;
         mutableCart.total += player.obj.pledge;
-        mutableCart.items[player.obj.bird_id].quantity++;
+        // I changed Sam's .id to .common_name because I think that's what I used elsewhere because I didn't include bird id in my React model in Flask
+        mutableCart.items[player.obj.common_name].quantity++;
         
-        if (user) {
-            set(ref(db, 'carts/' + user.uid), {mutableCart});
-        }
-        
+        // if (user) {
+        //     set(ref(db, 'carts/' + user.uid), {mutableCart});
+        // }
         setCart(mutableCart);
-        setMsg(false);
-
+        // setMsg(false);
     }
 
     const decQuantity = player => { 
         let mutableCart = {...cart}
 
-        mutableCart.size -= mutableCart.items[player.obj.bird_id].quantity;
-        mutableCart.total -= player.obj.pledge*mutableCart.items[player.obj.bird_id].quantity;
-        delete mutableCart.items[player.obj.bird_id];
-        if (user) {
-            set(ref(db, 'carts/' + user.uid), {mutableCart});
-        }
+        mutableCart.size--;
+        mutableCart.total -= player.obj.pledge;
+
+        mutableCart.items[player.obj.common_name].quantity > 1 ?
+            mutableCart.items[player.obj.common_name].quantity-- :
+            delete mutableCart.items[player.obj.common_name]
+
+
+        //had below code when working back through. Think it might be related to cart persistance to do later
+        // mutableCart.size -= mutableCart.items[player.obj.common_name].quantity;
+        // mutableCart.total -= player.obj.pledge*mutableCart.items[player.obj.common_name].quantity;
+        // delete mutableCart.items[player.obj.common_name];
+        // if (user) {
+        //     set(ref(db, 'carts/' + user.uid), {mutableCart});
+        // }
         setCart(mutableCart);
-        
     }
 
     const removePlayer = player => { 
@@ -47,12 +56,11 @@ let Cart = () => {
 
         mutableCart.size--;
         mutableCart.total -= player.obj.pledge;
-        delete mutableCart.items[player.obj.bird_id];
-        if (user) {
-            set(ref(db, 'carts/' + user.uid), {mutableCart});
-        }
+        delete mutableCart.items[player.obj.common_name];
+        // if (user) {
+        //     set(ref(db, 'carts/' + user.uid), {mutableCart});
+        // }
         setCart(mutableCart);
-        
     }
 
     const clearCart = () => { 
@@ -61,8 +69,6 @@ let Cart = () => {
             set(ref(db, 'carts/' + user.uid), null);
         }
         setCart(newCart);
-
-        
     }
     
     return (
@@ -74,12 +80,12 @@ let Cart = () => {
                         <hr/>
                       </div>
                     <div className="p-0" align="center">
-                        <h4>Bird Pledge Level 	&#160;	&#160;	&#160; | 		&#160;&#160;	&#160; Number of Pledges 	&#160;	&#160;	&#160; | 	&#160;	&#160;	&#160; Pledge Total</h4>
+                        <h4>Bird Pledge Level 		&#160;	&#160; | 		&#160;	&#160; Number of Pledges 		&#160;	&#160; | 		&#160;	&#160; Pledge Total</h4>
                     </div>
                         {/* Single player */}
-                        { Object.values(cart.items).map((player) => {
+                        { Object.values(cart.items).map((player, index) => {
 
-                            return<div className="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                            return<div key={index} className="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
                             <div className="mr-1"><img className="rounded" alt="pic" src={player.obj.image} width="70" /></div>
                             <div className="d-flex flex-column align-items-center product-details"><span className="font-weight-bold">{player.obj.first_name} {player.obj.last_name}</span>
                                 <div className="d-flex flex-row product-desc">
@@ -94,7 +100,7 @@ let Cart = () => {
                             <div>
                                 <h5 className="text-grey">${player.obj.pledge} </h5>
                             </div>
-                            <div className="d-flex align-items-center"><i className="fa fa-trash mb-1 text-danger" onClick={() => {removePlayer(player);}}></i></div>
+                            <div className="d-flex align-items-center"><i className="fa fa-trash mb-1 text-info" onClick={() => {removePlayer(player);}}></i></div>
                         </div>
                         })
                         
@@ -110,9 +116,9 @@ let Cart = () => {
                         </div>
                         <div className="d-flex align-items-center">
                             {cart.size === 0?
-                                 <button disabled className="btn btn-sm btn-success">Please use Pledge button to add items</button>
+                                 <Link className="btn btn-sm btn-info" to="/shop">Click Here to Add Pledges</Link>
                                  :
-                                 <button className="btn btn-sm btn-danger" onClick={clearCart}>Clear Pledges</button>
+                                 <button className="btn btn-sm btn-info" onClick={clearCart}>Clear Pledges</button>
 
                             }
             
