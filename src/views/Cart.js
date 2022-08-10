@@ -17,7 +17,7 @@ let Cart = () => {
         let mutableCart = {...cart}
 
         mutableCart.size++;
-        mutableCart.total += player.obj.price;
+        mutableCart.total += player.obj.pledge;
         mutableCart.items[player.obj.bird_id].quantity++;
         
         if (user) {
@@ -33,7 +33,7 @@ let Cart = () => {
         let mutableCart = {...cart}
 
         mutableCart.size -= mutableCart.items[player.obj.bird_id].quantity;
-        mutableCart.total -= player.obj.price*mutableCart.items[player.obj.bird_id].quantity;
+        mutableCart.total -= player.obj.pledge*mutableCart.items[player.obj.bird_id].quantity;
         delete mutableCart.items[player.obj.bird_id];
         if (user) {
             set(ref(db, 'carts/' + user.uid), {mutableCart});
@@ -46,7 +46,7 @@ let Cart = () => {
         let mutableCart = {...cart}
 
         mutableCart.size--;
-        mutableCart.total -= player.obj.price;
+        mutableCart.total -= player.obj.pledge;
         delete mutableCart.items[player.obj.bird_id];
         if (user) {
             set(ref(db, 'carts/' + user.uid), {mutableCart});
@@ -70,10 +70,11 @@ let Cart = () => {
             <div className="d-flex justify-content-center row">
                 <div className="col-md-8">
                     <div className="p-0" align="center">
-                        <h4>Cart</h4>
-                    </div>
+                        <h3>Pledge Summary</h3>
+                        <hr/>
+                      </div>
                     <div className="p-0" align="center">
-                        <h4>Birds Bartered For  |  Food Trade Promised</h4>
+                        <h4>Bird Pledge Level 	&#160;	&#160;	&#160; | 		&#160;&#160;	&#160; Number of Pledges 	&#160;	&#160;	&#160; | 	&#160;	&#160;	&#160; Pledge Total</h4>
                     </div>
                         {/* Single player */}
                         { Object.values(cart.items).map((player) => {
@@ -91,7 +92,7 @@ let Cart = () => {
                                 <i className="fa fa-plus text-success" onClick={() => {incQuantity(player);}}></i>
                             </div>
                             <div>
-                                <h5 className="text-grey">{player.obj.price} Critters Each</h5>
+                                <h5 className="text-grey">${player.obj.pledge} </h5>
                             </div>
                             <div className="d-flex align-items-center"><i className="fa fa-trash mb-1 text-danger" onClick={() => {removePlayer(player);}}></i></div>
                         </div>
@@ -102,23 +103,29 @@ let Cart = () => {
                 
 
                     <div className="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-                        <div className="d-flex flex-column align-items-center product-details"><span className="font-weight-bold">Total:</span>
+                        <div className="d-flex flex-column align-items-center product-details"><span className="font-weight-bold">Donation Total:</span>
                         </div>
                         <div>
-                            <h4 className="text-grey">{cart.total} Critters</h4>
+                            <h4 className="text-grey">${cart.total}</h4>
                         </div>
                         <div className="d-flex align-items-center">
                             {cart.size === 0?
-                                 <button disabled className="btn btn-sm btn-success">Your cart is empty</button>
+                                 <button disabled className="btn btn-sm btn-success">Please use Pledge button to add items</button>
                                  :
-                                 <button className="btn btn-sm btn-danger" onClick={clearCart}>Clear Cart</button>
+                                 <button className="btn btn-sm btn-danger" onClick={clearCart}>Clear Pledges</button>
 
                             }
             
                         </div>
                     </div>
-                    <div className="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-                        <button className="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" disabled={cart.size === 0 ? true : false}>Checkout</button>
+                    <div>
+                        {cart.size === 0?
+                        <p></p>
+                        :
+                        <div className="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
+                            <button className="btn btn-warning btn-block btn-lg ml-2 pay-button"  type="button" disabled={cart.size === 0 ? true : false}>Donate</button>
+                        </div>
+                        }
                     </div>
                 </div>
             </div>
