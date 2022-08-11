@@ -1,3 +1,4 @@
+import '../css/cartstyles.css'
 import { useState, useContext } from 'react';
 import { DataContext } from '../DataProvider';
 import axios from 'axios';
@@ -53,8 +54,14 @@ let Shop = () => {
 
            <div className='row justify-content-center'>
            <div className='row justify-content-center'>
-              <h2>Choose the bird associated with your desired pledge level</h2>
-              <h3>(You may choose any bird / pledge level more than once)</h3>
+                {typeof players !== 'object' ?
+                    <p></p>
+                    :
+                    <div>
+                        <h2>Choose the bird associated with your desired pledge level</h2>
+                        <h3>(You may choose any bird / pledge level more than once)</h3>
+                    </div>
+                }
 
            </div>
 
@@ -81,7 +88,7 @@ let Shop = () => {
                 })
             
             
-               : <h3 className = "text-center">Birds be in bed. Bide you time. . .</h3>}
+               : <h2 className = "text-center bide">Birds be in bed. Bide you time, please. . .</h2>}
 
            </div>
 

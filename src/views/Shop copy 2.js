@@ -1,3 +1,4 @@
+import '../css/cartstyles.css'
 import { useState, useContext } from 'react';
 import { DataContext } from '../DataProvider';
 import axios from 'axios';
@@ -10,8 +11,8 @@ let Shop = () => {
 
     let getPlayerData = async () => {
         // this would be version for local database  
-        let data = await axios.get('http://127.0.0.1:5000/api/react');
-        // let data = await axios.get('https://bird-on-the-brain-flask.herokuapp.com/api/react')
+        // let data = await axios.get('http://127.0.0.1:5000/api/react');
+        let data = await axios.get('https://bird-on-the-brain-flask.herokuapp.com/api/react')
 
         return data.status === 200 ? data.data : null
    }
@@ -37,16 +38,13 @@ let Shop = () => {
        mutableCart.items[player.common_name] ? 
        mutableCart.items[player.common_name].quantity++ : 
        mutableCart.items[player.common_name] = {'obj' : player, 'quantity' : 1}
-
+       
        console.log(mutableCart);
        console.log('goober')
        if (user) {
         set(ref(db, 'carts/' + user.uid), {mutableCart});
-        }
+    }
        setCart(mutableCart);
-    
-    // const [msg, setMsg] = useState(false);
-
    }
 
    return(
@@ -73,7 +71,7 @@ let Shop = () => {
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">Diet: {player.diet}</li>
                             <li className="list-group-item">Habitat: {player.habitat}</li>
-                            {/* <li className="list-group-item">Location: {player.location}</li> */}
+                            <li className="list-group-item">Location: {player.location}</li>
                             <li className="list-group-item">Conservation Status:  {player.conservation}</li>
                         </ul>
                         <div className="card-body">
@@ -84,7 +82,7 @@ let Shop = () => {
                 })
             
             
-               : <h3 className = "text-center">Birds be in bed. Bide you time. . .</h3>}
+               : <h3 className = "text-center bide">Birds be in bed. Bide you time. . .</h3>}
 
            </div>
 

@@ -20,12 +20,12 @@ function App() {
 
   return (
     <React.Fragment>
-    <Navbar/>
-    <Routes>
-      <Route children path='/' element={<Home players={players} shuffleplayers={shuffleplayers} />} />
-      <Route children path='/shop' element={<Shop />} />
-      <Route children path='/cart' element={<Cart />} />
-    </Routes>
+      <Navbar/>
+      <Routes>
+          <Route children path='/' element={<Home players={players} shuffleplayers={shuffleplayers} />} />
+          <Route children path='/shop' element={<Shop />} />
+          <Route children path='/cart' element={<Cart />} />
+      </Routes>
     </React.Fragment>
   );
 }

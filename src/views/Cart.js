@@ -113,7 +113,7 @@ let Cart = () => {
                         })
                         
                         }
-                         {/* End single player? */}
+
                 
 
                     <div className="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
