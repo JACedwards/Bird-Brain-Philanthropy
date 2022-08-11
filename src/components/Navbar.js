@@ -71,6 +71,9 @@ let Navbar = () => {
             <li className="nav-item active">
                 <Link className="nav-link" to="/cart">Donate</Link>
             </li>
+            <li className="nav-item active">
+                <Link className="nav-link" to="/danger">Threats</Link>
+            </li>
 
         </ul>
         <ul className='navbar-nav ml-auto align-items-center'>

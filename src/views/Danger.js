@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
+import '../css/cartstyles.css'
 
 let Home = props => {
 
@@ -43,32 +44,48 @@ let Home = props => {
 
     return (
         <div className="container mt-2">
-               
-               
+                <div className='row justify-content-center'>
+                    {console.log('Hello, Bird Brains!')}
+                    <h1>Extinction Threat</h1>
+               </div>
+               <div>
+                <hr className="hr-danger"></hr>
+               </div>
+               <div className='row'>
+                   <p className='p-danger-text ml-3'>Your donations will also support the humane eradication of the greatest threat to avian existance:  Felis catus.
+                   </p>
+                   <p className='p-danger-text ml-3'>Please use the button below to help you understand and identfy public enemy number 1.</p>
+               </div>
                <div className='row'>
                     {console.log('Hello, Bird Brains!')}
-                    <button className='btn btn-block btn-lg btn-info'  onClick={props.shuffleplayers}>Fetch a Fresh Fact</button>
+                    <button className='btn btn-block btn-lg btn-info button-width btn-txt-color'  onClick={props.shuffleplayers}>Fetch a Fresh Fact</button>
                </div>
                <br></br>
-               <div className="row justify-content-center">
+               {/* <div className="row justify-content-center">
                     <h1>The {props.players[0]}s'</h1>
                </div>
                <br></br>
                <div className="row justify-content-center mt-0">
                     <h1><u>Favorite Fact about Feeble-Minded Felines </u> </h1>
                     
-               </div>
+               </div> */}
 
-               <br></br>
-               <div className="row justify-content-center">
-                    <h3>{catfact}</h3>
+
+               <div className="row">
+                    <h4 className='ml-3'><u>Fact</u>: {catfact}</h4>
                </div>
-               <div className="row justify-content-center mt-5">
-                    <h1><u>Picture of the Enemy </u> </h1>
+               <div>
+                <hr className="hr-danger"></hr>
+               </div>
+               <div className="row justify-content-center mt-2">
+                    <h3 className='ml-3'>ID the Enemy  </h3>
                     
                </div>
                <div className="row justify-content-center">
-               <img src={catpic} className="img-fluid" alt='cat pic' />               
+               <img src={catpic} className="img-fluid cat-pic" alt='cat pic' />               
+               </div>
+               <div>
+                <br></br>
                </div>
         </div>
     )

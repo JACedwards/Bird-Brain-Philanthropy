@@ -48,3 +48,24 @@
     color: #02cef1;
     text-shadow: 2px 2px 5px red;
 }
+
+.hr-danger {
+    border: solid 4px black
+}
+
+.p-danger-text {
+    font-size: 22px
+}
+
+.cat-pic{
+    display: block;margin-left:auto;margin-right:auto;width:100%;max-width:400px
+}
+
+.button-width{
+    margin-left: 12px;
+    margin-right: 12px
+}
+
+.btn-txt-color{
+    color:lightgray
+}
