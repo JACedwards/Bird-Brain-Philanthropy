@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import '../css/cartstyles.css'
 
 let Home = props => {
 
@@ -44,32 +46,40 @@ let Home = props => {
     return (
         <div className="container mt-2">
                
-               
-               <div className='row'>
-                    {console.log('Hello, Bird Brains!')}
-                    <button className='btn btn-block btn-lg btn-info'  onClick={props.shuffleplayers}>Fetch a Fresh Fact</button>
-               </div>
-               <br></br>
-               <div className="row justify-content-center">
-                    <h1>The {props.players[0]}s'</h1>
-               </div>
-               <br></br>
-               <div className="row justify-content-center mt-0">
-                    <h1><u>Favorite Fact about Feeble-Minded Felines </u> </h1>
+            <br></br>
+            
+            <div className="row justify-content-center">
+                <h1>Bird on the Brain Philanthropy</h1>
+            </div>
+            <br></br>
+            <hr className="hr-danger"></hr>
+            <br></br>
+            <br></br>
+            <div className='row justify-content-center'>
+                
+                <div className="col-6">
                     
+
+               <div className='row'>
+                    <Link className='btn btn-block btn-lg btn-info button-width btn-txt-color btn-back-color-danger-page home-btn' to='/shop'>  Pledge: Prevent Bird Extinction </Link> 
                </div>
 
-               <br></br>
-               <div className="row justify-content-center">
-                    <h3>{catfact}</h3>
+               <div className='row'>
+                    <Link className='btn btn-block btn-lg btn-info button-width btn-txt-color btn-back-color-danger-page home-btn' to='/cart'>  Donate: Protect Favorite Birds </Link> 
                </div>
-               <div className="row justify-content-center mt-5">
-                    <h1><u>Picture of the Enemy </u> </h1>
-                    
+
+               <div className='row'>
+                    <Link className='btn btn-block btn-lg btn-info button-width btn-txt-color btn-back-color-danger-page home-btn' to='/danger'>  Educate:  Identify the Threats </Link> 
                </div>
-               <div className="row justify-content-center">
-               <img src={catpic} className="img-fluid" alt='cat pic' />               
-               </div>
+
+                </div>
+
+                <div className="col-4">
+                    <div className="row justify-content-center">
+                    <img className='img-fluid' src="egret-eye-color-match-cropped.jpg" />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

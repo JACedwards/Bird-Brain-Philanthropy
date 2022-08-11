@@ -69,3 +69,17 @@
 .btn-txt-color{
     color:lightgray
 }
+
+.btn-back-color-danger-page{
+    background-color: #005d6e;
+}
+
+.home-btn{
+    font-size: 30px;
+    padding-top: 33.65px;
+    padding-bottom: 33.65px
+}
+
+.don-ttl{
+    font-size: 22px
+}

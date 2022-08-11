@@ -58,7 +58,7 @@ let Home = props => {
                </div>
                <div className='row'>
                     {console.log('Hello, Bird Brains!')}
-                    <button className='btn btn-block btn-lg btn-info button-width btn-txt-color'  onClick={props.shuffleplayers}>Fetch a Fresh Fact</button>
+                    <button className='btn btn-block btn-lg btn-info button-width btn-txt-color btn-back-color-danger-page'  onClick={props.shuffleplayers}>Fetch a Fresh Fact</button>
                </div>
                <br></br>
                {/* <div className="row justify-content-center">

@@ -77,7 +77,7 @@ let Shop = () => {
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">Diet: {player.diet}</li>
                             <li className="list-group-item">Habitat: {player.habitat}</li>
-                            <li className="list-group-item">Location: {player.location}</li>
+                            {/* <li className="list-group-item">Location: {player.location}</li> */}
                             <li className="list-group-item">Conservation Status:  {player.conservation}</li>
                         </ul>
                         <div className="card-body">

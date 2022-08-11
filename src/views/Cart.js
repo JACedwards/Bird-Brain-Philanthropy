@@ -85,7 +85,7 @@ let Cart = () => {
                 <div className="col-md-8">
                     <div className="p-0" align="center">
                         <h3>Pledge Summary</h3>
-                        <hr/>
+                        <hr className="hr-danger"></hr>
                       </div>
                     <div className="p-0" align="center">
                         <h4>Bird Pledge Level 		&#160;	&#160; | 		&#160;	&#160; Number of Pledges 		&#160;	&#160; | 		&#160;	&#160; Pledge Total</h4>
@@ -117,7 +117,7 @@ let Cart = () => {
                 
 
                     <div className="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-                        <div className="d-flex flex-column align-items-center product-details"><span className="font-weight-bold">Donation Total:</span>
+                        <div className="d-flex flex-column align-items-center product-details"><span className="font-weight-bold don-ttl">Donation Total:</span>
                         </div>
                         <div>
                             <h4 className="text-grey">${cart.total}</h4>
