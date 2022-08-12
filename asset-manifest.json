@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Bird-Brain-Philanthropy/static/css/main.ceca8c87.css",
+    "main.js": "/Bird-Brain-Philanthropy/static/js/main.b40e0b19.js",
+    "static/js/787.2a4ca9b4.chunk.js": "/Bird-Brain-Philanthropy/static/js/787.2a4ca9b4.chunk.js",
+    "index.html": "/Bird-Brain-Philanthropy/index.html",
+    "main.ceca8c87.css.map": "/Bird-Brain-Philanthropy/static/css/main.ceca8c87.css.map",
+    "main.b40e0b19.js.map": "/Bird-Brain-Philanthropy/static/js/main.b40e0b19.js.map",
+    "787.2a4ca9b4.chunk.js.map": "/Bird-Brain-Philanthropy/static/js/787.2a4ca9b4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ceca8c87.css",
+    "static/js/main.b40e0b19.js"
+  ]
+}
