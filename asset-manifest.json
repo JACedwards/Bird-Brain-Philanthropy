@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Bird-Brain-Philanthropy/static/css/main.ceca8c87.css",
-    "main.js": "/Bird-Brain-Philanthropy/static/js/main.61c8a615.js",
+    "main.css": "/Bird-Brain-Philanthropy/static/css/main.c2a4b0fa.css",
+    "main.js": "/Bird-Brain-Philanthropy/static/js/main.95215455.js",
     "static/js/787.2a4ca9b4.chunk.js": "/Bird-Brain-Philanthropy/static/js/787.2a4ca9b4.chunk.js",
     "index.html": "/Bird-Brain-Philanthropy/index.html",
-    "main.ceca8c87.css.map": "/Bird-Brain-Philanthropy/static/css/main.ceca8c87.css.map",
-    "main.61c8a615.js.map": "/Bird-Brain-Philanthropy/static/js/main.61c8a615.js.map",
+    "main.c2a4b0fa.css.map": "/Bird-Brain-Philanthropy/static/css/main.c2a4b0fa.css.map",
+    "main.95215455.js.map": "/Bird-Brain-Philanthropy/static/js/main.95215455.js.map",
     "787.2a4ca9b4.chunk.js.map": "/Bird-Brain-Philanthropy/static/js/787.2a4ca9b4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ceca8c87.css",
-    "static/js/main.61c8a615.js"
+    "static/css/main.c2a4b0fa.css",
+    "static/js/main.95215455.js"
   ]
 }
