@@ -100,7 +100,7 @@ let Navbar = () => {
                     cart.size === 0 ?
                     <Link className='btn btn-sm btn-info m-2' to='/shop'><i class="fa-solid fa-dove"></i>  Pledge </Link> 
                     : 
-                    <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-solid fa-dove"></i>  Pledges: {cart.size} | Amount: ${cart.total} </Link>
+                    <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-solid fa-dove"></i>  Pledges: {cart.size} | Amount: ${cart.total.toLocaleString("en-US")} </Link>
                 }
                 
             </li>
