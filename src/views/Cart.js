@@ -137,7 +137,7 @@ let Cart = () => {
                         <p></p>
                         :
                         <div className="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-                            <button className="btn btn-warning btn-block btn-lg ml-2 pay-button"  type="button" disabled={cart.size === 0 ? true : false}>Donate</button>
+                            <button className="btn btn-warning btn-block btn-lg ml-2 pay-button btn-donate"  type="button" disabled={cart.size === 0 ? true : false}>(Donate: Planned Future Functionality)</button>
                         </div>
                         }
                     </div>

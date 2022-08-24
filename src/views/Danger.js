@@ -72,7 +72,7 @@ let Home = props => {
 
 
                <div className="row">
-                    <h4 className='ml-3'><u>Fact</u>: {catfact}</h4>
+                    <h4 className='ml-3'>{catfact}</h4>
                </div>
                <div>
                 <hr className="hr-danger"></hr>
