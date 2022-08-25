@@ -88,7 +88,7 @@ let Cart = () => {
                         <hr className="hr-danger"></hr>
                       </div>
                     <div className="p-0" align="center">
-                        <h4>Bird Avatar 		&#160;	&#160; | 		&#160;	&#160; Number of Pledges 		&#160;	&#160; | 		&#160;	&#160; Pledge Total</h4>
+                        <h4>Bird Avatar 		&#160;	&#160; | 		&#160;	&#160; Number of Pledges 		&#160;	&#160; | 		&#160;	&#160; Pledge Level</h4>
                     </div>
                         {/* Single player */}
                         { Object.values(cart.items).map((player, index) => {
