@@ -73,7 +73,7 @@ let Shop = () => {
                         <img src={player.image} className="card-img-top" alt={player.latin_name} />
                         <div className="card-body">
                             <h5 className="card-title">{player.common_name}</h5>
-                            <h5 className="card-title font-italic">Donation Level: ${player.pledge}</h5>
+                            <h5 className="card-title font-italic">Donation Level: ${player.pledge.toLocaleString("en-US")}</h5>
                         </div>
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">Diet: {player.diet}</li>
