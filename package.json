@@ -1,11 +1,7 @@
 {
   "name": "homewrk_react",
   "version": "0.1.0",
-<<<<<<< HEAD
-  "homepage": "https://JACedwards.github.io/React-App-Bird-on-the-Brain-Philanthropy",
-=======
   "homepage": "https://JACedwards.github.io./Bird-Brain-Philanthropy",
->>>>>>> 7837ab90bb680483ededc3d69bb0cfb2f4c9fb4d
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -16,7 +12,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "reactfire": "^4.2.1",
     "web-vitals": "^2.1.4"
   },
