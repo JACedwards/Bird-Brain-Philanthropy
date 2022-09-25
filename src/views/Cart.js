@@ -106,7 +106,7 @@ let Cart = () => {
                         <hr className="hr-danger"></hr>
                       </div>
                     <div className="p-0" align="center">
-                        <h4>Bird Pledge Level 		&#160;	&#160; | 		&#160;	&#160; Number of Pledges 		&#160;	&#160; | 		&#160;	&#160; Pledge Total</h4>
+                        <h4>Bird Avatar 		&#160;	&#160; | 		&#160;	&#160; Number of Pledges 		&#160;	&#160; | 		&#160;	&#160; Pledge Level</h4>
                     </div>
                         {/* Single player */}
                         { Object.values(cart.items).map((player, index) => {
@@ -119,12 +119,12 @@ let Cart = () => {
                                 </div>
                             </div>
                             <div className="d-flex flex-row align-items-center qty">
-                                <i className="fa fa-minus text-danger" onClick={() => {decQuantity(player);}}> </i>
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<i className="fa fa-minus text-danger" onClick={() => {decQuantity(player);}}> </i>
                                 <h5 className="text-grey mt-1 mr-1 ml-1">{player.quantity}</h5>
                                 <i className="fa fa-plus text-success" onClick={() => {incQuantity(player);}}></i>
                             </div>
                             <div>
-                                <h5 className="text-grey">${player.obj.pledge} </h5>
+                                <h5 className="text-grey">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;@ {player.obj.pledge} Level</h5>
                             </div>
                             <div className="d-flex align-items-center"><i className="fa fa-trash mb-1 text-info" onClick={() => {removePlayer(player);}}></i></div>
                         </div>
@@ -138,7 +138,7 @@ let Cart = () => {
                         <div className="d-flex flex-column align-items-center product-details"><span className="font-weight-bold don-ttl">Donation Total:</span>
                         </div>
                         <div>
-                            <h4 className="text-grey">${cart.total}</h4>
+                            <h4 className="text-grey">${cart.total.toLocaleString("en-US")}&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</h4>
                         </div>
                         <div className="d-flex align-items-center">
                             {cart.size === 0?
@@ -155,7 +155,7 @@ let Cart = () => {
                         <p></p>
                         :
                         <div className="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-                            <button className="btn btn-warning btn-block btn-lg ml-2 pay-button"  type="button" disabled={cart.size === 0 ? true : false}>Donate</button>
+                            <button className="btn btn-warning btn-block btn-lg ml-2 pay-button btn-donate"  type="button" disabled={cart.size === 0 ? true : false}>(Donate: Planned Future Functionality)</button>
                         </div>
                         }
                     </div>

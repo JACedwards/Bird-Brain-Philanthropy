@@ -2,10 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './css/index.css';
 import reportWebVitals from './reportWebVitals';
-
-// Need to change HashRouter below to BrowserRouter when in development Mode
-// Home page image may not work in development mode, but should be working when deployed
-import { HashRouter as Router } from 'react-router-dom'; // importing the router component so that we can wrap our App component in it, giving our app access to routing features
+import { BrowserRouter } from 'react-router-dom'; // importing the router component so that we can wrap our App component in it, giving our app access to routing features
 import ProviderLayer from './ProviderLayer';
 import { FirebaseAppProvider } from 'reactfire';
 
@@ -25,9 +22,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <Router>
+      <BrowserRouter>
         <ProviderLayer/>
-      </Router>
+      </BrowserRouter>
     </FirebaseAppProvider>
   </React.StrictMode>
 );
