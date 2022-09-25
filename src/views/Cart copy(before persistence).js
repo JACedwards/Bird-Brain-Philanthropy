@@ -23,11 +23,9 @@ let Cart = () => {
         // I changed Sam's .id to .common_name because I think that's what I used elsewhere because I didn't include bird id in my React model in Flask
         mutableCart.items[player.obj.common_name].quantity++;
         
-        //change realtime database if user logged in
-        if (user) {
-            set(ref(db, 'carts/' + user.uid), mutableCart);
-        }
-
+        // if (user) {
+        //     set(ref(db, 'carts/' + user.uid), {mutableCart});
+        // }
         setCart(mutableCart);
         // setMsg(false);
     }
@@ -50,10 +48,6 @@ let Cart = () => {
         // if (user) {
         //     set(ref(db, 'carts/' + user.uid), {mutableCart});
         // }
-                //change realtime database if user logged in
-        if (user) {
-            set(ref(db, 'carts/' + user.uid), mutableCart);
-        }
         setCart(mutableCart);
     }
 
@@ -74,26 +68,14 @@ let Cart = () => {
         // if (user) {
         //     set(ref(db, 'carts/' + user.uid), {mutableCart});
         // }
-
-        //change realtime database if user logged in
-        if (user) {
-            set(ref(db, 'carts/' + user.uid), mutableCart);
-        }
-
         setCart(mutableCart);
     }
 
     const clearCart = () => { 
         let newCart = {items: {}, total: 0, size: 0};
-        // if (user) {
-        //     set(ref(db, 'carts/' + user.uid), null);
-        // }
-        
-        //change realtime database if user logged in
         if (user) {
             set(ref(db, 'carts/' + user.uid), null);
         }
-
         setCart(newCart);
     }
     

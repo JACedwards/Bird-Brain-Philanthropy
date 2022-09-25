@@ -20,7 +20,7 @@ let Navbar = () => {
 
     // adding setCart here made everything disappear on screen
 
-    const{cart, set, } = useContext(DataContext);  
+    const{cart, setCart,} = useContext(DataContext);  
 
     const { status, data: user } = useUser();
 
@@ -34,7 +34,7 @@ let Navbar = () => {
     const signout = async () => {
         await signOut(auth);
         console.log('signed user out');
-        setCart({items: {}, total: 0, size: 0})
+        setCart({items: {}, total: 0, size: 0});
     }
     
     useEffect(() => {
@@ -56,7 +56,7 @@ let Navbar = () => {
 
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   
-<Link className="nav-link" style={{color: 'white'}}  to="/"><i class="fa-solid fa-dove"></i> BIRD BRAIN <i class="fa-solid fa-brain"></i> |</Link>
+<Link className="nav-link" style={{color: 'white'}}  to="/"><i class="fa-solid fa-dove"></i> BIRD BRAIN <i class="fa-solid fa-brain"></i>  	&#160;&#8212;	&#160;  Philanthropy |</Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -66,7 +66,13 @@ let Navbar = () => {
                 <Link className="nav-link" to="/">Home</Link>
             </li>
             <li className="nav-item active">
-                <Link className="nav-link" to="/shop">Barter</Link>
+                <Link className="nav-link" to="/shop">Pledge</Link>
+            </li>
+            <li className="nav-item active">
+                <Link className="nav-link" to="/cart">Donate</Link>
+            </li>
+            <li className="nav-item active">
+                <Link className="nav-link" to="/danger">Threats</Link>
             </li>
 
         </ul>
@@ -91,10 +97,10 @@ let Navbar = () => {
                     }
             <li className='nav-item'>
                 {
-                    cart.size == 0 ?
-                    <Link className='btn btn-sm btn-info m-2' to='/shop'><i class="fa-solid fa-dove"></i>  Bird Bartering </Link> 
+                    cart.size === 0 ?
+                    <Link className='btn btn-sm btn-info m-2' to='/shop'><i class="fa-solid fa-dove"></i>  Pledge </Link> 
                     : 
-                    <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-solid fa-dove"></i>  Items in Cart: {cart.size} | {cart.total} Critters</Link>
+                    <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-solid fa-dove"></i>  Pledges: {cart.size} | Amount: ${cart.total} </Link>
                 }
                 
             </li>

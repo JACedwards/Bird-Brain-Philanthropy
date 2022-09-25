@@ -40,10 +40,9 @@ let Shop = () => {
        mutableCart.items[player.common_name] = {'obj' : player, 'quantity' : 1}
        
        console.log(mutableCart);
-       console.log('goober');
-       
+       console.log('goober')
        if (user) {
-        set(ref(db, 'carts/' + user.uid), mutableCart);
+        set(ref(db, 'carts/' + user.uid), {mutableCart});
     }
        setCart(mutableCart);
    }
