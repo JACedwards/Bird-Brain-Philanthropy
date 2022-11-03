@@ -13,7 +13,6 @@ function App() {
 
 
   const shuffleplayers = () => {
-    // players.sort(() => Math.random() - 0.5);
     let tempplayers = [...players];
     tempplayers.sort(() => Math.random() - 0.5);
     setplayers(tempplayers); 
