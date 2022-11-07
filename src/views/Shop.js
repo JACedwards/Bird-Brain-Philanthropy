@@ -12,6 +12,8 @@ let Shop = () => {
     let getPlayerData = async () => {
         // this would be version for local database  
         // let data = await axios.get('http://127.0.0.1:5000/api/react');
+
+        // *******   When migrate Bird on Brain app away from Heroku remember to change this url *********
         let data = await axios.get('https://bird-on-the-brain-flask.herokuapp.com/api/react')
 
         return data.status === 200 ? data.data : null
