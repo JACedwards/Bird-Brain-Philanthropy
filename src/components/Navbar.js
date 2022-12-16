@@ -18,7 +18,6 @@ let Navbar = () => {
     //     setCount(count + 1);
     //   }
 
-    // adding setCart here made everything disappear on screen
 
     const{cart, setCart,} = useContext(DataContext);  
 
@@ -126,32 +125,4 @@ export default Navbar;
 
 
 
-        {/* Start of Version WITHOUT Sign in funcitons (
-            Version WITH sign in capabilities at end */}
-            // <ul className='navbar-nav ml-auto align-items-center'>
-            {/* {user 
-                    ?
-                    <>
-                        <li className="nav-item">
-                            <p className="nav-link m-0">Welcome, {user.displayName}!</p>
-                        </li>
-                        <li className="nav-item">
-                            <button className="btn btn-sm btn-info mr-2" onClick={signout}>Sign out</button>
-                        </li>
-                    </>
-                    :
-                    <li className="nav-item">
-                        <button className="btn btn-sm btn-info mr-2" onClick={signin}>Sign in</button>
-                    </li>
-            } */}
-            {/* <li className='nav-item'>
-                {
-                    cart.size === 0 ?
-                    <Link className='btn btn-sm btn-info m-2' to='/shop'><i class="fa-solid fa-dove"></i>  Pledge </Link> 
-                    : 
-                    <Link className='btn btn-sm btn-info m-2' to='/cart'><i class="fa-solid fa-dove"></i>  Pledges: {cart.size} | Amount: ${cart.total.toLocaleString("en-US")} </Link>
-                }
-                
-            </li>
-        </ul> */}
-         {/* End of version without signin capabilities        */}
+
