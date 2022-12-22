@@ -11,14 +11,6 @@ let Navbar = () => {
 
     const db = useDatabase();
     
-    // const [count, setCount] = useState(0);
-
-    // const changeCounter = () => {
-    //     console.log('current count' + count);
-    //     setCount(count + 1);
-    //   }
-
-
     const{cart, setCart,} = useContext(DataContext);  
 
     const { status, data: user } = useUser();
